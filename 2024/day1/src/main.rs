@@ -1,6 +1,7 @@
 use std::fs;
 fn main() {
-    //let test_file_path= String::from("inputs/test_input");
+    //Part 1
+    //let test_file_input= String::from("inputs/test_input");
     let file_input = String::from("inputs/puzzle_input");
     let contents = fs::read_to_string(file_input)
         .expect("Something went wrong reading the file")
@@ -47,5 +48,22 @@ fn main() {
     }
 
     println!("Part 1: {}", sum);
+
+    // Part 2
+    let mut similarity_score = 0;
+
+    left_vector.iter().for_each(|x|
+        {
+            let x_times = right_vector.iter()
+                .filter(|y| x == *y) //or x.eq(y)
+                .count()
+                as i32;
+
+            similarity_score += x * x_times
+
+        });
+
+    println!("Part 2: {}", similarity_score);
+
 
 }
