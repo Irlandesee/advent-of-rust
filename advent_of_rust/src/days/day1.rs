@@ -1,8 +1,8 @@
 use std::fs;
-pub fn solve_day1(input_file: &String) -> (i32, i32) {
+use std::path::PathBuf;
+pub fn solve_day1(input_file: PathBuf) -> (i32, i32) {
     //Part 1
-    let file_input = String::from(input_file);
-    let contents = fs::read_to_string(file_input)
+    let contents = fs::read_to_string(input_file)
         .expect("Something went wrong reading the file")
         .lines()
         .map(|line| line.trim()
