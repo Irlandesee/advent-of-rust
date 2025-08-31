@@ -11,7 +11,11 @@ fn main() {
             println!("Part one: {:?}", part_one_res);
             println!("Part two: {:?}", part_two_res);
         },
-        "2" => println!("Solving day2: {}", day),
+        "2" => {
+            let(part_one_res, part_two_res) = day2::solve_day2(file);
+            println!("Part one: {:?}", part_one_res);
+            println!("Part two: {:?}", part_two_res);
+        }
         _ => println!("Unknown day")
     }
 
