@@ -16,9 +16,7 @@ pub fn solve_day2(input_file: PathBuf) -> (i32, i32){
     let mut safe_count = 0;
     contents.iter()
         .for_each(|vec| {
-            let asc_or_desc = check_ascending_or_descending(vec);
-            let delta_ok = check_delta(vec);
-            if asc_or_desc == "safe" && delta_ok == true {
+            if is_level_valid(vec) {
                 println!("{:?} is safe ", vec);
                 safe_count += 1;
             } else {
@@ -31,8 +29,24 @@ pub fn solve_day2(input_file: PathBuf) -> (i32, i32){
     //Part two
     //Now a report is considered safe when removing a sigle bad level
     //would make the report safe
+    let mut safe_count_part_two = 0;
+    contents.iter()
+        .for_each(|vec| {
+            if is_level_valid(vec) {
+                println!("{:?} is safe", vec);
+                safe_count_part_two += 1;
+            } else {
+                println!("{:?} is unsafe, checking if it could be safe...", vec);
+                if check_if_vec_can_be_safe(vec) {
+                    println!("{:?} can be made safe", vec);
+                    safe_count_part_two += 1;
+                } else {
+                    println!("{:?} cannot be made safe", vec);
+                }
+            }
+        });
 
-    (safe_count, -1)
+    (safe_count, safe_count_part_two)
 }
 
 /**
@@ -65,4 +79,31 @@ fn check_delta(vec: &Vec<i32>) -> bool {
         .all(|(index, value)| {
             index + 1 >= vec.len() || (value - vec[index + 1]).abs() <= 3 && vec[index + 1 ] != *value
         })
+}
+
+fn is_level_valid(vec: &Vec<i32>) -> bool {
+    let ordered = check_ascending_or_descending(vec);
+    let delta_ok = check_delta(vec);
+    ordered == "safe" && delta_ok == true
+}
+
+/**
+Finds the first "BAD" level of the vector and returns its index
+**/
+fn vec_find_bad_level(vec: &Vec<i32>) -> usize {
+    for (index, value) in vec.iter().enumerate() {
+        if index < vec.len() {
+            
+        }
+
+    }
+
+    0
+}
+
+fn check_if_vec_can_be_safe(vec: &Vec<i32>) -> bool {
+    let mut temp_vec = vec.clone();
+
+
+    false
 }
