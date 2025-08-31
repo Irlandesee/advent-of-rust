@@ -1,8 +1,7 @@
 use std::fs;
-fn main() {
+pub fn solve_day1(input_file: &String) -> (i32, i32) {
     //Part 1
-    //let test_file_input= String::from("inputs/test_input");
-    let file_input = String::from("inputs/puzzle_input");
+    let file_input = String::from(input_file);
     let contents = fs::read_to_string(file_input)
         .expect("Something went wrong reading the file")
         .lines()
@@ -40,14 +39,12 @@ fn main() {
     left_vector.sort();
     right_vector.sort();
 
-    let mut sum = 0;
+    let mut  part_one_sum= 0;
     //We assume both vectors are the same length
     for (index, smallest_left) in left_vector.iter().enumerate() {
         let delta = smallest_left - right_vector[index];
-        sum += delta.abs()
+        part_one_sum += delta.abs()
     }
-
-    println!("Part 1: {}", sum);
 
     // Part 2
     let mut similarity_score = 0;
@@ -63,7 +60,5 @@ fn main() {
 
         });
 
-    println!("Part 2: {}", similarity_score);
-
-
+    (part_one_sum, similarity_score)
 }
