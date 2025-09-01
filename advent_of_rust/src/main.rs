@@ -1,6 +1,6 @@
 mod days;
 use advent_of_rust::parse_args;
-use days::{day1, day2};
+use days::{day1, day2, day3};
 
 fn main() {
     let (day, file) = parse_args();
@@ -15,6 +15,10 @@ fn main() {
             let(part_one_res, part_two_res) = day2::solve_day2(file);
             println!("Part one: {:?}", part_one_res);
             println!("Part two: {:?}", part_two_res);
+        }
+        "3" => {
+            day3::solve_day3(file)
+
         }
         _ => println!("Unknown day")
     }
