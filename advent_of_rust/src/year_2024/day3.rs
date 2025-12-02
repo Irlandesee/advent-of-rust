@@ -54,11 +54,12 @@ pub fn solve_day3(input_file: PathBuf){
 }
 
 fn calculate_sum_muls(vec: Vec<&String>) -> i32 {
-    vec.iter()
+    let sum = vec.iter()
         .map(|token| {
             let (x, y) = extract_numbers(token);
-            x + y
-        }).sum()
+            x * y
+        }).sum();
+    sum
 }
 
 
