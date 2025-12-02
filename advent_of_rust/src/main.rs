@@ -31,7 +31,8 @@ fn main() {
         "2025" => {
             match day.as_str(){
                 "1" => {
-                    let (_, _) = day1_2025::solve(file);
+                    let (part_one_res, _) = day1_2025::solve(file);
+                    println!("Part one: {:?}", part_one_res);
 
                 }
                 _ => println!("Unknown day")

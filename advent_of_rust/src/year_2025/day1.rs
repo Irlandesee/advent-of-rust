@@ -18,7 +18,7 @@ pub fn solve(input_file: PathBuf) -> (i32, i32) {
         match parse_line(line){
             (Some(dir), Some(num)) => {
                 current_dial = calc_move(dir, num, current_dial);
-                println!("{}:{} -> {}", dir, num, current_dial);
+                //println!("{}:{} -> {}", dir, num, current_dial);
                 if current_dial == 0 {
                     password += 1;
                 }
@@ -26,9 +26,9 @@ pub fn solve(input_file: PathBuf) -> (i32, i32) {
             _ => println!("Invalid line: {}", line)
         }
     }
-    println!("password: {}", password);
+    //println!("password: {}", password);
 
-    (-1, -1)
+    (password, -1)
 }
 
 fn parse_line(line: &str) -> (Option<&str>, Option<i32>)  {
