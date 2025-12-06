@@ -3,7 +3,7 @@ mod year_2025;
 
 use advent_of_rust::parse_args;
 use year_2024::{day1 as day1_2024, day2, day3};
-use year_2025::{day1 as day1_2025};
+use year_2025::{day1 as day1_2025, day2 as day2_2025};
 
 fn main() {
     let (year, day, file) = parse_args();
@@ -32,6 +32,11 @@ fn main() {
             match day.as_str(){
                 "1" => {
                     let (part_one_res, part_two_res) = day1_2025::solve(file);
+                    println!("Part one: {:?}", part_one_res);
+                    println!("Part two: {:?}", part_two_res);
+                }
+                "2" => {
+                    let (part_one_res, part_two_res) = day2_2025::solve(file);
                     println!("Part one: {:?}", part_one_res);
                     println!("Part two: {:?}", part_two_res);
                 }
